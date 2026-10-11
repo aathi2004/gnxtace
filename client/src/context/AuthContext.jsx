@@ -93,12 +93,16 @@ export const AuthProvider = ({ children }) => {
         setToken(data.token);
         setUser(data.user);
         setFavoriteIds(new Set());
-        toast.success(`Welcome to SaaSVerse, ${data.user.name}! 🎉`);
+        toast.success(`Welcome to Form & Function, ${data.user.name}! 🎉`);
         return { success: true };
       }
-      return { success: false, message: data.message || 'Registration failed' };
+      return { success: false, message: data.message || 'Registration failed.' };
     } catch (error) {
-      const msg = error.response?.data?.message || 'Registration failed. Please check your inputs.';
+      const msg = 
+        error.response?.data?.message || 
+        (Array.isArray(error.response?.data?.errors) ? error.response.data.errors[0] : null) ||
+        error.message ||
+        'Registration failed. Please check your inputs.';
       toast.error(msg);
       return { success: false, message: msg };
     }
@@ -127,9 +131,12 @@ export const AuthProvider = ({ children }) => {
         toast.success(`Welcome back, ${data.user.name}! 👋`);
         return { success: true };
       }
-      return { success: false, message: data.message || 'Login failed' };
+      return { success: false, message: data.message || 'Login failed.' };
     } catch (error) {
-      const msg = error.response?.data?.message || 'Invalid email or password.';
+      const msg = 
+        error.response?.data?.message || 
+        error.message || 
+        'Invalid email or password.';
       toast.error(msg);
       return { success: false, message: msg };
     }

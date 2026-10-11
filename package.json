@@ -1,0 +1,27 @@
+{
+  "name": "fullstack-intern-task",
+  "version": "1.0.0",
+  "description": "Form & Function — Mini SaaS Template Store",
+  "scripts": {
+    "server": "npm run dev --prefix server",
+    "server:start": "npm run start --prefix server",
+    "client": "npm run dev --prefix client",
+    "seed": "npm run seed --prefix server",
+    "test": "npm test --prefix server",
+    "test:server": "node server/test-api.js",
+    "build:client": "npm run build --prefix client",
+    "install:all": "npm install --prefix server && npm install --prefix client"
+  },
+  "keywords": [
+    "react",
+    "vite",
+    "tailwindcss",
+    "express",
+    "sqlite",
+    "knex",
+    "jwt",
+    "saas"
+  ],
+  "author": "Aathithya S",
+  "license": "MIT"
+}
